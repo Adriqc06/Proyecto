@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Proyecto.Models.Usuario>
+@{
+    ViewData["Title"] = "Lista de Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    @if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            @TempData["mensaje"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Lista de Usuarios</h3>
+        </div>
+        <div class="col-sm-6">
+            <a class="btn btn-success d-block" asp-action="Create" asp-controller="Usuarios">Agregar nuevo usuario</a>
+
+        </div>
+    </div>
+
+    <div class="row">
+        @if (Model.Count() > 0)
+        {
+
+            <table class="table table-borderer table-striped">
+                <thead>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.Id)</td>
+                        <td>@Html.DisplayNameFor(m => m.Nombre)</td>
+                        <td>@Html.DisplayNameFor(m => m.Direccion)</td>
+                        <td>@Html.DisplayNameFor(m => m.Telefono)</td>
+                        <td>@Html.DisplayNameFor(m => m.CodigoPostal)</td>
+                        <td>@Html.DisplayNameFor(m => m.Tipo_usuario)</td>
+                        <td>@Html.DisplayNameFor(m => m.Estado)</td>
+                        <td>@Html.DisplayNameFor(m => m.Ciudad)</td>
+                        <td>Acciones</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Nombre</td>
+                        <td>@item.Direccion</td>
+                        <td>@item.Telefono</td>
+                        <td>@item.CodigoPostal</td>
+                        <td>@item.Tipo_usuario</td>
+                        <td>@item.Estado</td>
+                        <td>@item.Ciudad</td>
+                        <td>
+                            <a asp-controller="Usuarios" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                            <a asp-controller="Usuarios" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        }
+        else
+        {
+
+        }
+    </div>
+
+</div>
+
+

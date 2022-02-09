@@ -1,0 +1,162 @@
+﻿@model Proyecto.Models.Login
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+                a.navbar-brand {
+                    white-space: normal;
+                    text-align: center;
+                    word-break: break-all;
+                }
+
+                /* Provide sufficient contrast against white background */
+                a {
+                    color: #0366d6;
+                }
+
+                .btn-primary {
+                    color: #fff;
+                    background-color: #1b6ec2;
+                    border-color: #1861ac;
+                }
+
+                .logo {
+                    padding-right: 30px;
+                }
+
+                .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+                    color: #fff;
+                    background-color: #1b6ec2;
+                    border-color: #1861ac;
+                }
+
+                /* Sticky footer styles
+            -------------------------------------------------- */
+                html {
+                    font-size: 14px;
+                }
+
+
+
+
+                .border-top {
+                    border-top: 1px solid #e5e5e5;
+                }
+
+                .border-bottom {
+                    border-bottom: 1px solid #e5e5e5;
+                }
+
+                .box-shadow {
+                    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+                }
+
+                button.accept-policy {
+                    font-size: 1rem;
+                    line-height: inherit;
+                }
+
+                /* Sticky footer styles
+            -------------------------------------------------- */
+                html {
+                    position: relative;
+                    min-height: 100%;
+                }
+
+                body {
+                    /* Margin bottom by footer height */
+                    margin-bottom: 60px;
+                }
+
+                .footer {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    white-space: nowrap;
+                    line-height: 60px; /* Vertically center the text there */
+                    /*----------------*/
+                }
+
+                Body {
+                    font-family: Calibri, Helvetica, sans-serif;
+                    background-color: white;
+                }
+
+                button {
+                    background-color: #4CAF50;
+                    width: 100%;
+                    color: black;
+                    padding: 15px;
+                    margin: 10px 0px;
+                    border: none;
+                    cursor: pointer;
+                }
+
+                form {
+                    border: 3px solid #f1f1f1;
+                }
+
+                input[type=text], input[type=password] {
+                    width: 100%;
+                    margin: 8px 0;
+                    padding: 12px 20px;
+                    display: inline-block;
+                    border: 2px solid green;
+                    box-sizing: border-box;
+                }
+
+                button:hover {
+                    opacity: 0.7;
+                }
+
+                .cancelbtn {
+                    width: auto;
+                    padding: 10px 18px;
+                    margin: 10px 5px;
+                }
+
+
+                .container {
+                    padding: 25px;
+                }
+        </style>
+    </head>
+    <body>
+
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <img src="/resources/logo.png" width="170" height="47" class="logo">
+                </div>
+            </nav>
+        </header>
+        <center> <h1> Iniciar sesión </h1> </center>
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="container">
+                <label>Usuario : </label>
+                <input type="text" placeholder="Ejemplo: Admin" asp-for="User">
+                <span asp-validation-for="User" class="text-danger"></span>
+
+                <label>Contraseña : </label>
+                <input type="password" placeholder="*********" asp-for="Pass">
+                <span asp-validation-for="Pass" class="text-danger"></span>
+
+                <button type="submit" id="btn_Entrar">Entrar</button>
+            </div>
+        </form>
+    </body>
+</html>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
